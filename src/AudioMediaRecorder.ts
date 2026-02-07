@@ -1,14 +1,14 @@
-export class Audio {
-    private stream?: MediaStream;
-    private mediaRecorder?: MediaRecorder;
-    private timeslice?: number;
-    private onData?: (data: ArrayBuffer, timecode: number) => void;
+export class AudioMediaRecorder {
+  private stream?: MediaStream;
+  private mediaRecorder?: MediaRecorder;
+  private timeslice?: number;
+  private onData?: (data: ArrayBuffer, timecode: number) => void;
 
-  constructor() {}
+  constructor() { }
 
-  async init(onData: (data: ArrayBuffer, timecode: number, ) => void, timeslice: number = 10000): Promise<void> {
-      this.timeslice = timeslice;
-      this.onData = onData;
+  async init(onData: (data: ArrayBuffer, timecode: number,) => void, timeslice: number = 10000): Promise<void> {
+    this.timeslice = timeslice;
+    this.onData = onData;
     // Request mic access
     this.stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
@@ -16,7 +16,7 @@ export class Audio {
 
 
     this.mediaRecorder = new MediaRecorder(this.stream, {
-        mimeType: "audio/webm;codecs=opus"
+      mimeType: "audio/webm;codecs=opus"
     });
 
     this.mediaRecorder.ondataavailable = this.handleDataAvailable.bind(this);
@@ -33,7 +33,6 @@ export class Audio {
   }
 
   async handleDataAvailable(event: BlobEvent): Promise<void> {
-    console.log(`timeStamp: ${event.timeStamp}\ttimecode: ${event.timecode}`);
     const data = await event.data.arrayBuffer()
     this.onData?.(data, event.timecode);
   }

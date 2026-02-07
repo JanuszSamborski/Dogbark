@@ -1,7 +1,8 @@
 { pkgs ? import <nixpkgs-unstable> {} }:
 
-pkgs.mkShell {
-  packages = [
-    pkgs.deno
+pkgs.mkShellNoCC {
+  packages = with pkgs; [
+    deno
+    bashInteractive
   ];
 }
