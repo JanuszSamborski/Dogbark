@@ -20,7 +20,7 @@ export class Storage {
             }
 
             if (!this.db.objectStoreNames.contains("session")) {
-                const store = this.db.createObjectStore("session", { autoIncrement: true });
+                this.db.createObjectStore("session", { autoIncrement: true });
             }
 
 

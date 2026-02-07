@@ -17,7 +17,7 @@ class CustomAudioProcessor extends AudioWorkletProcessor {
       }
    }
 
-   process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean {
+   process(inputs: Float32Array[][], _outputs: Float32Array[][], _parameters: Record<string, Float32Array>): boolean {
       if (!this.timestamp) {
          this.timestamp = Date.now()
       }

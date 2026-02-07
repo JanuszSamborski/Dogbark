@@ -38,7 +38,7 @@ export class Encoder {
         this.encoder?.encode(audioData)
     }
 
-    processAudio = (chunk: EncodedAudioChunk, metadata: any) => {
+    processAudio = (chunk: EncodedAudioChunk, _metadata: any) => {
         this.onChunk?.(chunk)
     }
 
