@@ -3,5 +3,8 @@ import solid from 'vite-plugin-solid'
 
 export default defineConfig({
   plugins: [solid()],
-  base: './'
+  base: './',
+  build: {
+    assetsInlineLimit: 0
+  }
 })

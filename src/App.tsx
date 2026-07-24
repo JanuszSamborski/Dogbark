@@ -39,7 +39,7 @@ function App() {
   const audioConfig: AudioConfig = {
     channelCount: 1,
     sampleRate: 48000,
-    bufferSize: 4096,
+    bufferSize: 128,
   };
 
   // --------------------

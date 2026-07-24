@@ -1,5 +1,5 @@
 import type { AudioConfig } from "./AudioConfig";
-import audioProcessorUrl from "./CustomAudioProcessor.ts?url"
+import audioProcessorUrl from "./CustomAudioProcessor.worklet.js?url"
 
 export class NewAudio {
     private stream?: MediaStream;
